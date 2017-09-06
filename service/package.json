@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "http-proxy": "^1.16.2",
-    "jsonwebtoken": "^7.4.3"
+    "jsonwebtoken": "^7.4.3",
+    "body": "^5.1.0"
   }
 }
