@@ -28,8 +28,12 @@ proxy.on('proxyReq', function (proxyReq, req) {
 });
 
 http.createServer(function (req, res) {
-    textBody(req, function (err, body) {
-        req.body = body;
+    var body = [];
+    req.on('data', function (chunk) {
+        body.push(chunk);
+    });
+    req.on('end', function () {
+        req.body = Buffer.concat(body);
         proxy.web(req, res, {
             target: target || req.url
         });
