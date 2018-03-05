@@ -20,7 +20,7 @@ proxy.on('proxyReq', function (proxyReq, req) {
     }
     var payload = {'iss': issuer, 'exp': (new Date).getTime() + (expiry * 1000)};
     payload['digest'] = hash.digest('hex');
-    myToken = jwt.sign(payload, signingKey, {"header": {"digestAlgorithm": algoritm}});
+    myToken = jwt.sign(payload, signingKey, {"header": {"digestAlgorithm": algoritm.toUpperCase()}});
 
     console.log(myToken);
     proxyReq.setHeader('Authorization', 'Bearer ' + myToken);
